@@ -1,0 +1,422 @@
+{% extends 'intro/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% comment %} <!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'intro/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'intro/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'intro/css/all.min.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <title>Home Page | {% block title %}{% endblock title %}</title>
+    </head>
+<body> {% endcomment %}
+{% comment %} <h2><center><strong>Welcome to Vani Foundation <!--{{name}}!--></strong></center></h2>  {% endcomment %}
+{% comment %} It's {{ date | date:"l, d F, Y" }} at {{ date | time:"H:i:s" }} {% endcomment %}
+            {% comment %} <h2>Menu Bar</h2> {% endcomment %}
+{% comment %} {% block navigation %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+    <!-- <img src="{% static 'app/images/logpdc.jpg' %}" width="101" height="55" margin-left="-40px" class="logo" alt=""> -->
+    <a class="navbar-brand" href="/">Vani Foundation</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#home">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="counsellingDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Career Counselling
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="counsellingDropdown">
+            <li><a class="dropdown-item" href="#">Online Counselling</a></li>
+            <li><a class="dropdown-item" href="#">Offline Counselling</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="contactDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+            <li><a class="dropdown-item" href="#">Telephone</a></li>
+            <li><a class="dropdown-item" href="#">Email</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-warning" type="submit">S</button>
+      </form>
+      <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown mx-2">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-capitalize">{{request.user.username|capfirst}}</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="{% url 'profile'%}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'orders'%}">Orders</a></li>
+              <li><a class="dropdown-item" href="{% url 'passwordchange'%}">Change Password</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>
+          <li class="nav-item mx-2">
+            <a href="#" class="nav-link text-white"><span class="badge bg-danger">4</span> Cart
+            </a>
+          </li>
+            {% else %}
+          <li class="nav-item mx-2">
+            <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a href="{% url 'customerregistration'%}" class="nav-link text-white">Registration</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endblock navigation%} {% endcomment %}
+{% comment %} {% block sidebar %}
+<!--Sidebar starts here-->
+<div class="sidebar">
+  <a class="active" href="#home">Home</a>
+  <a href="intro/product">Products</a>
+  <a href="/profile">Profile</a>
+  <a href="/orders">Orders</a>
+  <a href="intro/contact">Contact</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  ..
+</div>
+{% endblock sidebar %} {% endcomment %}
+{% block banner_slider %}
+<!--Banner Slider-->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'intro/images/banner/confused.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'intro/images/banner/GLBAJAJ.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'intro/images/banner/counselling.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'intro/images/banner/NIET.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'intro/images/banner/mangalmay.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+<!-- End Banner Slider -->
+{% endblock banner_slider %}
+
+
+{% block banner %}
+<!--Banner-->
+<section id="banner" class="section-m1">
+  <h4>Admission Services</h4>
+  <h2>Up to <span>100% placement guarantee</span> All type of colleges and degrees</h2>
+  <button class="normal">Explore More</button>
+</section>
+<!--Banner-->
+{% endblock banner %}
+
+
+{% block main-content %}
+<!-- 1st Product Slider -->
+
+<div class="mx-3">
+  <h2>Top Colleges</h2>
+  <!-- Slider 2 -->
+  <div class="owl-carousel" id="slider2">
+    {% for t in topwears %}
+    <a href="{% url 'product-detail' t.id %}" class="btn">
+      <div class="item"><img src="{{t.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{t.title}}</span><br><span class="fs-5">Rs. {{t.discounted_price}}</span></div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<!-- End 1st Product Slider -->
+{% endblock main-content %}
+{% block college %}
+<!-- College Info Section -->
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/NIET.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/GLBAJAJ.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/Vision.png' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/mangalmay.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/lingayas.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/aggarwal.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/bimtech.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/gniot.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'intro/images/banner/innovative.png' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Payment Info Section -->
+{% endblock college %}
+{% block liveadmission %}
+<!--Live Banner-->
+ <div class="container">
+  <div class="row bg-danger text-center p-12 text-white border-bottom shadow">
+    <h1>ADMISSION IS LIVE NOW</h1>
+    <span>Apply now for any course</span>
+    <small class="fw-lighter">Terms and Condition Applied</small>
+  </div>
+</div> 
+<!--Live Banner end-->
+{% endblock liveadmission %}
+
+{% block main-content2 %}
+<!-- 2nd Product Slider -->
+<div class="mx-3">
+  <h4 class="alert alert-danger">Colleges available for admission</h4>
+  <!-- Slider 1 -->
+  <div class="owl-carousel" id="slider1">
+    {% for b in bottomwears %}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span></div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<!-- End 2nd Product Slider -->
+{% endblock main-content2 %}
+
+{% block main-content3 %}
+<!-- 3rd Product Slider -->
+<div class="mx-3">
+  <h2>Online Counselling</h2>
+  <!-- Slider 3 -->
+  <div class="owl-carousel" id="slider3">
+    {% for m in mobiles %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item"><img src="{{m.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span></div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<!-- End erd Product Slider -->
+{% endblock main-content3 %}
+{% block main-content4 %} 
+    <section id="header">
+    <section id="page-header" class="about-header">
+        <h2>#KnowUs</h2>
+        <p>Are you Curious to know Something!</p>
+    </section>
+    <!-- About Page Start Here -->
+    <section id="about-head" class="section-p1">
+    <center><img src="https://www.snagoff.com/blog/wp-content/uploads/2017/08/Career-Counselling_TopBnr.png" width="auto" height="600px"></center>
+    <img src="{% static 'intro/images/banner/searching.jpg' %}" width="auto" height="600px">
+    </section>
+  </section>
+  {% endblock main-content4 %}
+    <!-- About Page end Here -->
+    <!-- About app start -->
+    {% comment %} <section id="about-app" class="section-p1">
+        <h1>Download our <a href="#">App</a></h1>
+        <div class="video">
+            <video autoplay muted loop src="images/about/1.mp4"></video>
+        </div>
+    </section> {% endcomment %}
+    <!-- About app End -->
+    {% block Feature %}
+    <!-- Feature Section start -->
+    <h2>Features</h2>
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="{% static 'intro/images/banner/f1.png' %}" width="auto" height="auto" alt="">
+            <h6>Free Counselling</h6>
+            <img src="{% static 'intro/images/banner/f2.png' %}" width="auto" height="auto" alt="">
+            <h6>Online Counselling</h6>
+        </div>
+        <div class="fe-box">
+            <img src="intro/images/banner/f3.png"  width="auto" height="auto" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="intro/images/banner/f4.png" width="auto" height="auto" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="intro/images/bsnner/f5.png" width="auto" height="auto" alt="">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="intro/images/banner/f6.png" width="auto" height="auto" alt="">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+    <!-- Feature Section End -->
+    {% endblock Feature%}
+    {% block Newsletters %}
+    <!-- News Letters Start-->
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span> </p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your E-mail address">
+            <button class="normal">Sign Up</button>
+
+        </div>
+    </section>
+    <!-- News Letters End-->
+    {% endblock Newsletters %}
+    {% block footer_content %}
+    <!-- Footer Start-->
+    <footer class="section-p1">
+        <div class="col">
+            <img src="{% static 'intro/images/banner/counselling.jpg' %}" width="70" height="60" class="logo" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong>Aagman Society, Faridabad, 121004</p>
+            <p><strong>Phone: </strong>+91 8368505360</p>
+            <p><strong>Hours: </strong>10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="https://www.linkedin.com/in/srajan-pipraiya-3691a5179"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100008626410350"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/srajanpipraiya/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+                    <a href="https://github.com/Srajanpipraiya"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">My Account</a>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">Track my Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google</p>
+            <div class="row">
+                <img src="{% static 'intro/images/banner/app.jpg' %}" width="70" height="60" class="logo" alt="">
+                <img src="{% static 'intro/images/banner/play.jpg' %}" width="70" height="60" class="logo" alt="">
+            </div>
+            <p>Secured Payment</p>
+            <img src="{% static 'intro/images/banner/payment.png' %}" alt="">
+        </div>
+        <br>
+        <br>
+            {% comment %} <marquee loop="-1" scrollamount="5" width="100%">
+                This webpage is created by Srajan Pipraiya @Vani Foundation
+            </marquee> {% endcomment %}
+        <div class="copyright">
+          <abbr><b>Created By:</abbr></b>
+          <br>
+            <p>@2023 Vani Foundation</p>
+        </div>
+    </footer>
+    <footer class="container-fluid bg-dark text-center p-2 mt-5">
+        <small class="text-white">Copyright &copy; 2023 || Designed By Srajan Pipraiya || </small>
+        {% comment %} <img src="{% static 'intro/images/banner/payment.png' %}" alt="" srcset="" class="img-fluid" height="2px"> {% endcomment %}
+      </footer> 
+    <!-- Footer End-->
+    {% endblock footer_content %}
+
+    <script src="{% static 'intro/js/script.js' %}"></script>
+    <script src="{% static 'intro/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'intro/js/all.min.js' %}"></script>
+    </body>
+</html>

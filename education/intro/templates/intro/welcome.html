@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome Page</title>
+        <link rel="stylesheet" href="{% static 'intro/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/all.min.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    </head>
+    <body>
+{% block banner_slider %}
+<!--Banner Slider-->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/Career-Counselling-291x280.png' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/counselling.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/confused.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/features/f1.png' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/features/f6.png' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+<!-- End Banner Slider -->
+{% endblock banner_slider %}
+        <h2><center><strong>Hello there, Welcome to Vani Foundation <!--{{name}}!--></strong></center></h2> 
+        It's {{ date | date:"l, d F, Y" }} at {{ date | time:"H:i:s" }}
+        {% comment %} <div class="container">
+        <h1>Todo List</h1>
+        <form>
+            <input type="text" id="input" placeholder="Add new item">
+            <button type="button" onclick="addItem()">Add</button>
+        </form>
+        <ul id="list"></ul>
+        </div> {% endcomment %}
+            {% comment %} <h2>Menu Bar</h2> {% endcomment %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <!-- <img src="{% static 'app/images/logpdc.jpg' %}" width="101" height="55" margin-left="-40px" class="logo" alt=""> -->
+                <a class="navbar-brand" href="/">Vani Foundation</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Career Counselling
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+                        <li><a class="dropdown-item" href="#">Online Counselling</a></li>
+                        <li><a class="dropdown-item" href="#">Offline Counselling</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-white" href="#" id="fashionDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+                        <li><a class="dropdown-item" href="#">Telephone</a></li>
+                        <li><a class="dropdown-item" href="#">Email</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-warning" type="submit">S</button>
+                  </form>
+                  <div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      {% if request.user.is_authenticated %}
+                      <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <span class="text-capitalize">{{request.user.username|capfirst}}</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="#">Orders</a></li>
+                          <li><a class="dropdown-item" href="#">Change Password</a></li>
+                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item mx-2">
+                        <a href="#" class="nav-link text-white"><span class="badge bg-danger">4</span> Cart
+                        </a>
+                      </li>
+                       {% else %}
+                      <li class="nav-item mx-2">
+                        <a href="login.html" class="nav-link text-white">Login</a>
+                      </li>
+                      <li class="nav-item mx-2">
+                        <a href="#" class="nav-link text-white">Registration</a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            {% comment %} {% block banner_slider %} {% endblock banner_slider %} {% endcomment %}
+            {% block banner %} {% endblock banner %}
+            {% block main-content %} {% endblock main-content %}
+            {% block main-content2 %} {% endblock main-content2 %}
+            {% block payment %} {% endblock payment %}
+            {% block main-content3 %} {% endblock main-content3 %}
+            {% block livesale %} {% endblock livesale %}
+            {% block main-content4 %} {% endblock main-content4 %}
+    <section id="header">
+    <section id="page-header" class="about-header">
+        <h2>#KnowUs</h2>
+        <p>Are you Curious to know Something!</p>
+    </section>
+    <!-- About Page Start Here -->
+    <section id="about-head" class="section-p1">
+    <center><img src="https://www.snagoff.com/blog/wp-content/uploads/2017/08/Career-Counselling_TopBnr.png" width="auto" height="600px"></center>
+    </section>
+    <!-- About Page end Here -->
+    <!-- About app start -->
+    {% comment %} <section id="about-app" class="section-p1">
+        <h1>Download our <a href="#">App</a></h1>
+        <div class="video">
+            <video autoplay muted loop src="images/about/1.mp4"></video>
+        </div>
+    </section> {% endcomment %}
+    <!-- About app End -->
+    <!-- Feature Section start -->
+    <h2>Features</h2>
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="images/features/f1.png" width="auto" height="60px" alt="">
+            <h6>Free Counselling</h6>
+            <img src="images/features/f2.png" width="auto" height="60px" alt="">
+            <h6>Online Counselling</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f3.png"  width="auto" height="60px" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f4.png" width="auto" height="60px" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f5.png" width="auto" height="60px" alt="">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f6.png" width="auto" height="60px" alt="">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+    <!-- Feature Section End -->
+    <!-- News Letters Start-->
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span> </p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your E-mail address">
+            <button class="normal">Sign Up</button>
+
+        </div>
+    </section>
+    <!-- News Letters End-->
+    <!-- Footer Start-->
+    <footer class="section-p1">
+        <div class="col">
+            <img src="images\counselling.jpg" width="70" height="60" class="logo" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong>Aagman Society, Faridabad, 121004</p>
+            <p><strong>Phone: </strong>+91 8368505360</p>
+            <p><strong>Hours: </strong>10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="https://www.linkedin.com/in/srajan-pipraiya-3691a5179">
+                        <i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100008626410350">
+                        <i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/srajanpipraiya/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+                    <a href="https://github.com/Srajanpipraiya"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">My Account</a>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">Track my Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google</p>
+            <div class="row">
+                {% comment %} <img src="images/pay/app.jpg" width="70" height="60" class="logo" alt=""> {% endcomment %}
+                <img src="https://e7.pngegg.com/pngimages/912/1019/png-clipart-app-store-google-play-apple-apple-text-logo-thumbnail.png" height="2px" class="logo" alt="">
+            </div>
+            <p>Secured Payment</p>
+            <img src="images/pay/pay.png" alt="">
+        </div>
+        <br>
+        <br>
+        <div>
+            <abbr><b>Created By:</abbr></b>
+            <br><br>
+            {% comment %} <marquee loop="-1" scrollamount="5" width="100%">
+                This webpage is created by Srajan Pipraiya @Vani Foundation
+            </marquee> {% endcomment %}
+        </div>
+        <div class="copyright">
+            <p>@2023 Vani Foundation</p>
+        </div>
+    </footer>
+    <footer class="container-fluid bg-dark text-center p-2 mt-5">
+        <small class="text-white">Copyright &copy; 2023 || Designed By Srajan Pipraiya || </small>
+        <img src="{% static 'images/payment.png' %}" alt="" srcset="" class="img-fluid" height="2px">
+      </footer> 
+    <!-- Footer End-->
+
+    <script src="script.js"></script>
+    </body>
+</html>

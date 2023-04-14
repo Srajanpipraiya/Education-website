@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'intro/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'intro/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'intro/css/all.min.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <title>Home Page | {% block title %}{% endblock title %}</title>
+    </head>
+<body>
+    {% comment %} <h2><center><strong>Welcome to Vani Foundation <!--{{name}}!--></strong></center></h2>  {% endcomment %}
+    {% comment %} {% block sidebar %}
+    <!--Sidebar starts here-->
+    <div class="sidebar" id="mySidebar">
+      <a class="active" href="#home">Home</a>
+      <a href="javascript.void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="intro/product">Products</a>
+      <a href="/profile">Profile</a>
+      <a href="/orders">Orders</a>
+      <a href="intro/contact">Contact</a>
+    </div>
+    
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+    <!-- Page content -->
+    {% comment %} <h2>Collapsed Sidebar</h2>
+    <p>Content.. 
+    </div>
+    {% endblock sidebar %} {% endcomment %}
+
+<h2><center><strong>Welcome to Vani Foundation <!--{{name}}!--></strong></center></h2> 
+
+{% block navigation %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+    <!-- <img src="{% static 'app/images/logpdc.jpg' %}" width="101" height="55" margin-left="-40px" class="logo" alt=""> -->
+    <a class="navbar-brand" href="/">Vani Foundation</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="intro/home">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="counsellingDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Career Counselling
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="counsellingDropdown">
+            <li><a class="dropdown-item" href="#">Online Counselling</a></li>
+            <li><a class="dropdown-item" href="#">Offline Counselling</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="contactDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+            <li><a class="dropdown-item" href="#">Telephone</a></li>
+            <li><a class="dropdown-item" href="#">Email</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-warning" type="submit">S</button>
+      </form>
+      <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown mx-2">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-capitalize">{{request.user.username|capfirst}}</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="{% url 'profile'%}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'orders'%}">Orders</a></li>
+              <li><a class="dropdown-item" href="{% url 'passwordchange'%}">Change Password</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>
+          <li class="nav-item mx-2">
+            <a href="#" class="nav-link text-white"><span class="badge bg-danger">4</span> Cart
+            </a>
+          </li>
+            {% else %}
+          <li class="nav-item mx-2">
+            <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a href="{% url 'customerregistration'%}" class="nav-link text-white">Registration</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endblock navigation %}
+{% comment %} {% block sidebar %}
+<!--Sidebar starts here-->
+<div class="sidebar">
+  <a class="active" href="#home">Home</a>
+  <a href="intro/product">Products</a>
+  <a href="/profile">Profile</a>
+  <a href="/orders">Orders</a>
+  <a href="intro/contact">Contact</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  ..
+</div>
+{% endblock sidebar %} {% endcomment %}
+{% block banner_slider %} {% endblock banner_slider %}
+  {% block banner %} {% endblock banner %}
+  {% block main-content %} {% endblock main-content %}
+  {% block main-content2 %} {% endblock main-content2 %}
+  {% block college %} {% endblock college %}
+  {% block main-content3 %} {% endblock main-content3 %}
+  {% block liveadmission %} {% endblock liveadmission %}
+  {% block main-content4 %} {% endblock main-content4 %}
+
+{% block footer_content %}
+<!-- Footer Start-->
+<footer class="section-p1">
+    <div class="col">
+        <img src="intro/images/banner/counselling.jpg" width="70" height="60" class="logo" alt="">
+        <h4>Contact</h4>
+        <p><strong>Address: </strong>Aagman Society, Faridabad, 121004</p>
+        <p><strong>Phone: </strong>+91 8368505360</p>
+        <p><strong>Hours: </strong>10:00 - 18:00, Mon - Sat</p>
+        <div class="follow">
+            <h4>Follow Us</h4>
+            <div class="icon">
+                <a href="https://www.linkedin.com/in/srajan-pipraiya-3691a5179"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100008626410350"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/srajanpipraiya/"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/Srajanpipraiya"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">My Account</a>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">Track my Order</a>
+        <a href="#">Help</a>
+    </div>
+    <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google</p>
+        <div class="row">
+            <img src="/static/images/banner/app.jpg"   alt="">
+            <img src="/static/images/banner/play.jpg"  alt="">
+        </div>
+        <p>Secured Payment</p>
+        <img src="/static/images/banner/pay.png" alt="">
+    </div>
+        {% comment %} <marquee loop="-1" scrollamount="5" width="100%">
+            This webpage is created by Srajan Pipraiya @Vani Foundation
+        </marquee> {% endcomment %}
+    <div class="copyright">
+      <abbr><b>Created By:</abbr></b>
+      <br>
+        <p>@2023 Vani Foundation</p>
+    </div>
+</footer>
+<footer class="container-fluid bg-dark text-center p-2 mt-5">
+    <small class="text-white">Copyright &copy; 2023 || Designed By Srajan Pipraiya || </small>
+    <img src="{% static 'intro/images/payment.png' %}" alt="" srcset="" class="img-fluid" height="2px">
+  </footer> 
+<!-- Footer End-->
+{% endblock footer_content %}
+{% comment %} <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+    }
+</script> {% endcomment %}
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+crossorigin="anonymous"></script>
+<script src="{% static 'intro/js/script.js' %}"></script>
+<script src="{% static 'intro/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'intro/js/all.min.js' %}"></script>
+</body>
+</html>
